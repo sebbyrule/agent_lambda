@@ -1,5 +1,5 @@
 import unittest
-from agent.memory import Memory
+from memory.memory import Memory
 
 class TestMemory(unittest.TestCase):
     def setUp(self):

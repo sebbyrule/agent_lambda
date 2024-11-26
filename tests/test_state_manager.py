@@ -1,5 +1,5 @@
 import unittest
-from agent.state_manager import StateManager
+from state_mangement.state_manager import StateManager
 
 class TestStateManagemr(unittest.TestCase):
     def setUp(self):

@@ -1,11 +1,11 @@
 import unittest
 from agent.agent import Agent
-from llm_wrappers.openai_llm import OpenAILLM
-from llm_wrappers.mock_llm import MockLLM
-from llm_wrappers.google_gemini import GoogleGeminiLLM
-from llm_wrappers.ollama import OllamaLLM
-from tools.search_tool import SearchTool
-from tools.file_operation_tool import FileOperationTool
+from agent.llm_wrappers.openai_llm import OpenAILLM
+from agent.llm_wrappers.mock_llm import MockLLM
+from agent.llm_wrappers.google_gemini import GoogleGeminiLLM
+from agent.llm_wrappers.ollama import OllamaLLM
+from agent.tools.search_tool import SearchTool
+from agent.tools.file_operation_tool import FileOperationTool
 class TestAgentIntegration(unittest.TestCase):
     def setUp(self):
         llm = MockLLM()

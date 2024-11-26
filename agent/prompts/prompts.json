@@ -1,0 +1,5 @@
+{
+    "default": "Hello! How can I assist you today?",
+    "task_completion": "The task has been completed. Do you need further help?",
+    "error": "I'm sorry, something went wrong. Could you rephrase your request?"
+}

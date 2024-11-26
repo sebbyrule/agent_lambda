@@ -1,5 +1,5 @@
 import unittest
-from tools.search_tool import SearchTool
+from agent.tools.search_tool import SearchTool
 
 class TestSearchTool(unittest.TestCase):
     def setUp(self):

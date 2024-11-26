@@ -1,5 +1,5 @@
-from agent.memory import Memory
-from agent.state_manager import StateManager
+from memory.memory import Memory
+from state_mangement.state_manager import StateManager
 from agent.task_manager import TaskManager
 class Agent:
     def __init__(self, goal, llm, tools=None):

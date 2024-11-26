@@ -1,18 +1,29 @@
 import unittest
-from unittest import mock
-from llm_wrappers.google_gemini import GoogleGeminiLLM
+from unittest.mock import patch
+from agent.llm_wrappers.google_gemini import GoogleGeminiLLM
 
 class TestGoogleGeminiLLM(unittest.TestCase):
-    
     def setUp(self):
-        self.llm = GoogleGeminiLLM(api_key="test_key", base_url="http://mock_api.com")
-    @mock.patch("requests.post")
-    def test_generate_response(self, mock_post):
-        mock_post.return_value.json.return_value = {"text": "Test response"}
-        mock_post.return_value.raise_for_status = lambda: None
+        self.llm = GoogleGeminiLLM()
 
-        response = self.llm.generate_response("Test prompt")
+    @patch('google.generativeai.GenerativeModel.generate_content')
+    def test_generate_response(self, mock_generate_content):
+        prompt = "Test prompt"
+        mock_generate_content.return_value = "Test response"
+        response = self.llm.generate_response(prompt)
         self.assertEqual(response, "Test response")
+
+    @patch('google.generativeai.GenerativeModel.generate_content')
+    def test_generate_response_with_error(self, mock_generate_content):
+        prompt = "Test prompt"
+        mock_generate_content.side_effect = Exception("Test error")
+        with self.assertRaises(Exception):
+            self.llm.generate_response(prompt)
+
+    def test_change_system_instructions(self):
+        new_system_instruction = "New system instruction"
+        self.llm.change_system_instructions(new_system_instruction)
+        self.assertEqual(self.llm.system_instruction, new_system_instruction)
 
 if __name__ == "__main__":
     unittest.main()
